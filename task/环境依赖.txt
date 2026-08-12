@@ -1,0 +1,5 @@
+支持Windows11主机中的WSL2环境，Apache Airflow不是Windows原生运行。主软件为Apache Airflow2.10.5，使用Ubuntu24.04和Python3.12；辅助工具为PowerShell7与UTF-8文本编辑器。
+
+安装依赖时需要联网，正式处理输入时不访问外部服务。Apache Airflow使用Apache License2.0，不需要商业许可。输入材料是自造脱敏样例，可公开使用。
+
+建议2核CPU、4GB内存和2GB可写磁盘，不需要GPU。执行账号需要创建临时AIRFLOW_HOME以及读取输入、写入output目录的权限，单次审查入口应在10分钟内结束。本题特有风险是策略加载顺序错误可能遮蔽首个违规原因，BashOperator源码只参与解析，不执行其中命令。

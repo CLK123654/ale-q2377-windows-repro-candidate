@@ -1,0 +1,6 @@
+1. 读取cluster_policy.json、dag_inventory.json和dags目录，确认合同、清单与源码对应。
+2. 在airflow_local_settings.py中实现dag_policy与task_policy，按合同处理隔离、拒绝和任务属性。
+3. 为清单中的每个源码建立独立DagBag解析，采集加载对象和import_errors。
+4. 对加载成功的DAG执行SerializedDAG序列化与还原，比较任务属性和依赖边。
+5. 运行audit_policy.py，生成准入、有效任务、序列化和交接摘要文件。
+6. 根据交接摘要核对准入决定、原因、团队规则和各交付物之间的一致性。

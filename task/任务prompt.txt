@@ -1,0 +1,7 @@
+共享Airflow平台准备接入一批目录与结算DAG。平台值班人员需要分清可以接入、应当隔离和必须退回的对象，并统一准入DAG的任务队列与运行上限。input_data中提供平台策略合同、DAG接入清单和待审源码包。
+
+在Apache Airflow中实现dag_policy与task_policy。策略按合同处理环境和团队标签、owner、BashOperator命令、catchup及任务规模；进入隔离清单的DAG不能记成导入失败。通过准入后，再按所属团队设置queue，并收紧retries与execution_timeout。
+
+用DagBag逐个解析接入清单中的源码，记录加载、隔离或导入错误。对已加载DAG执行SerializedDAG往返，核对任务属性和依赖关系。输入中的Bash命令只用于解析审查。
+
+交付output目录中的策略文件与审查工具，并在results中给出DAG准入清单、任务有效属性、序列化结构和交接摘要。准入结论应能回溯到策略合同、接入清单和Airflow解析结果。
